@@ -2,9 +2,11 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from '../lib/api.js'
 
 export function useProducts(categorySlug = null, extra = {}) {
+  const params = { category: categorySlug || undefined, ...extra };
+  console.log('[useProducts] categorySlug:', categorySlug, 'params:', params);
   return useQuery({
     queryKey: ['products', categorySlug, extra],
-    queryFn: () => api.products({ category: categorySlug || undefined, ...extra }),
+    queryFn: () => api.products(params),
   })
 }
 

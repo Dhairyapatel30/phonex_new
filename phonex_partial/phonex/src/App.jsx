@@ -215,10 +215,6 @@ function CategoryPage() {
   return (
     <main className="flex-1 py-16">
       <div className="max-w-7xl mx-auto px-6">
-        {/* DEBUG INFO - Remove after fixing */}
-        <div style={{ background: '#fffbe6', color: '#b26c00', padding: '8px', borderRadius: '8px', marginBottom: '16px', fontSize: '13px' }}>
-          <strong>Debug:</strong> slug = <code>{slug || '(none)'}</code>, products.length = <code>{products.length}</code>
-        </div>
         <SectionHeader
           eyebrow={slug ? category?.name || 'Shop' : 'Shop'}
           title={slug ? `Products in ${category?.name || 'this collection'}` : 'All products'}
@@ -234,8 +230,8 @@ function CategoryPage() {
               value={nlInput}
               onChange={(e) => setNlInput(e.target.value)}
               placeholder='Try: "red case for iPhone 15 under ₹3000 with MagSafe"'
-              className="flex-1 rounded-2xl border bg-white px-5 py-3 text-sm"
-              style={{ borderColor: 'hsl(var(--border))' }}
+              className="flex-1 rounded-2xl border bg-transparent px-5 py-3 text-sm backdrop-blur-sm"
+              style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'transparent' }}
             />
             <button type="submit" className="btn-primary px-6">Search</button>
           </div>
@@ -252,8 +248,8 @@ function CategoryPage() {
               id="sort"
               value={sort}
               onChange={(e) => setParam('sort', e.target.value)}
-              className="mt-1 rounded-xl border bg-white px-4 py-2 text-sm"
-              style={{ borderColor: 'hsl(var(--border))' }}
+              className="mt-1 rounded-xl border bg-transparent px-4 py-2 text-sm backdrop-blur-sm"
+              style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'transparent' }}
             >
               <option value="">Newest</option>
               <option value="price_asc">Price: low → high</option>
@@ -268,8 +264,8 @@ function CategoryPage() {
               type="number"
               value={min}
               onChange={(e) => setParam('min', e.target.value)}
-              className="mt-1 w-24 rounded-xl border bg-white px-3 py-2 text-sm"
-              style={{ borderColor: 'hsl(var(--border))' }}
+              className="mt-1 w-24 rounded-xl border bg-transparent px-3 py-2 text-sm backdrop-blur-sm"
+              style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'transparent' }}
             />
           </div>
           <div>
@@ -279,8 +275,8 @@ function CategoryPage() {
               type="number"
               value={max}
               onChange={(e) => setParam('max', e.target.value)}
-              className="mt-1 w-24 rounded-xl border bg-white px-3 py-2 text-sm"
-              style={{ borderColor: 'hsl(var(--border))' }}
+              className="mt-1 w-24 rounded-xl border bg-transparent px-3 py-2 text-sm backdrop-blur-sm"
+              style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'transparent' }}
             />
           </div>
         </div>
