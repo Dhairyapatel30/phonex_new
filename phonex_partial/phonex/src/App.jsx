@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Link, Routes, Route, useParams, useSearchParams } from 'react-router-dom'
 import { Heart, Star } from 'lucide-react'
 import {
@@ -595,9 +595,30 @@ function NotFoundPage() {
 }
 
 export default function App() {
+  function getPreferredTheme() {
+    if (typeof window === 'undefined') return 'light';
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || stored === 'light') return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  const [theme, setTheme] = useState(getPreferredTheme());
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'));
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <Navbar />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
       <ErrorBoundary>
         <Routes>
           <Route path="/" element={<HomePage />} />
