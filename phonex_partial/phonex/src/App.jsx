@@ -163,7 +163,7 @@ function CategoryPage() {
   const searchQuery = [q, color, ...features].filter(Boolean).join(' ')
 
   const { data: categories = [] } = useCategories()
-  const { data: products = [], isLoading: productsLoading } = useProducts(slug, {
+  const { data: products = [], isLoading: productsLoading } = useProducts(slug || undefined, {
     q: searchQuery || undefined,
     sort: sort || undefined,
     min: min || undefined,
@@ -215,6 +215,10 @@ function CategoryPage() {
   return (
     <main className="flex-1 py-16">
       <div className="max-w-7xl mx-auto px-6">
+        {/* DEBUG INFO - Remove after fixing */}
+        <div style={{ background: '#fffbe6', color: '#b26c00', padding: '8px', borderRadius: '8px', marginBottom: '16px', fontSize: '13px' }}>
+          <strong>Debug:</strong> slug = <code>{slug || '(none)'}</code>, products.length = <code>{products.length}</code>
+        </div>
         <SectionHeader
           eyebrow={slug ? category?.name || 'Shop' : 'Shop'}
           title={slug ? `Products in ${category?.name || 'this collection'}` : 'All products'}
