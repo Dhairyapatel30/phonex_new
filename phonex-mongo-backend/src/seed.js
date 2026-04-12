@@ -21,7 +21,7 @@ const IMG = {
   case: 'https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=800&q=80',
   band: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?auto=format&fit=crop&w=800&q=80',
   eclipse: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80',
-  charger: 'https://images.unsplash.com/photo-1662947041775-ada634027a14?auto=format&fit=crop&w=800&q=80',
+  charger: 'https://images.unsplash.com/photo-1725304382197-663ae3864750?auto=format&fit=crop&w=800&q=80',
   nova: 'https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=800&q=80',
 }
 
@@ -53,7 +53,7 @@ const PRODUCTS = [
     compatibleWith: ['iPhone 15', 'iPhone 15 Pro', 'iPhone 14', 'Samsung Galaxy S24', 'OnePlus 12'],
   },
   {
-    name: 'Slate Air 12', slug: 'slate-air-12', price: 74999, featured: false, icon_type: 'tablet', catSlug: 'tablets',
+    name: 'IPAD Air 12 Slate', slug: 'ipad-air-12-slate', price: 74999, featured: false, icon_type: 'tablet', catSlug: 'tablets',
     image_url: IMG.slate,
     description: 'Ultra-thin tablet for creators. M3 chip, 12.9" Liquid Retina XDR — the studio in your bag.',
     specs: [['Display','12.9" Liquid Retina XDR'],['Chip','M3 (10-core GPU)'],['Storage','256GB / 512GB / 1TB'],['Weight','468g'],['Connectivity','Thunderbolt 4'],['Battery','10 hours']],
@@ -82,7 +82,7 @@ const PRODUCTS = [
     specs: [['Display','6.1" OLED 120Hz'],['Chip','Snapdragon 8 Gen 4'],['Camera','50MP Dual OIS'],['Battery','4200 mAh + 65W'],['RAM','12GB'],['Storage','256GB UFS 4.0']],
   },
   {
-    name: 'Volt Charger 65W', slug: 'volt-charger-65w', price: 2499, featured: false, icon_type: 'accessory', catSlug: 'accessories',
+    name: '65W Fast Charger', slug: '65w-fast-charger', price: 2499, featured: false, icon_type: 'accessory', catSlug: 'accessories',
     image_url: IMG.charger,
     description: 'GaN III charger. 65W across three ports — charge laptop, phone, and tablet simultaneously.',
     specs: [['Total Output','65W'],['Ports','2× USB-C + 1× USB-A'],['Technology','GaN III'],['Weight','120g'],['Safety','UL Certified'],['Compatibility','100–240V']],
