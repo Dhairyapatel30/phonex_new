@@ -10,4 +10,8 @@ export default defineConfig({
     },
     dedupe: ['react', 'react-dom'],
   },
+  server: {
+    host: '100.76.76.112',
+    port: 5173
+  },
 })
