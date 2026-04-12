@@ -80,8 +80,8 @@ export default function CompatibilityPage() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="I own a…  e.g. iPhone 15, Pixel 8, Galaxy S24"
-              className="w-full rounded-2xl border bg-white pl-12 pr-4 py-4 text-base"
-              style={{ borderColor: 'hsl(var(--border))' }}
+              className="w-full rounded-2xl border bg-card pl-12 pr-4 py-4 text-base"
+              style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}
               aria-label="Your device"
             />
           </div>
@@ -102,8 +102,8 @@ export default function CompatibilityPage() {
                 key={d}
                 type="button"
                 onClick={() => pick(d)}
-                className="rounded-full border px-4 py-1.5 text-xs hover:bg-cream transition-colors"
-                style={{ borderColor: 'hsl(var(--border))' }}
+                className="rounded-full border px-4 py-1.5 text-xs hover:bg-background transition-colors"
+                style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}
               >
                 {d}
               </button>

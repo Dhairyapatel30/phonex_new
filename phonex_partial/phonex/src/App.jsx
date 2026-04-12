@@ -1,3 +1,4 @@
+
 import { useState, useMemo, useEffect } from 'react'
 import { Link, Routes, Route, useParams, useSearchParams } from 'react-router-dom'
 import { Heart, Star } from 'lucide-react'
@@ -20,12 +21,12 @@ import Footer from './components/Footer'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import FrequentlyBoughtTogether from './components/FrequentlyBoughtTogether.jsx'
 import ProductHighlights from './components/ProductHighlights.jsx'
+import SectionHeader from './components/SectionHeader.jsx'
 import { getProductIcon, getProductImage, formatPriceUSD, HERO_IMAGE } from './lib/utils.js'
 import { parseNaturalQuery, filtersToUrlParams } from './lib/nlFilter.js'
 import { useAuth } from './contexts/AuthContext.jsx'
 import { api } from './lib/api.js'
 import { toast } from 'sonner'
-
 import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
 import CartPage from './pages/CartPage.jsx'
@@ -39,21 +40,6 @@ import PaymentPage from './pages/PaymentPage.jsx'
 import CompatibilityPage from './pages/CompatibilityPage.jsx'
 import Chatbot from './components/Chatbot.jsx'
 
-function SectionHeading({ eyebrow, title, description }) {
-  return (
-    <div className="mb-10 max-w-2xl">
-      <span className="section-label">{eyebrow}</span>
-      <h2 className="mt-4 text-3xl md:text-4xl font-serif-display font-normal tracking-tight">
-        {title}
-      </h2>
-      {description && (
-        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-          {description}
-        </p>
-      )}
-    </div>
-  )
-}
 
 function HomePage() {
   const { data: categories = [], isLoading: categoriesLoading } = useCategories()
@@ -79,10 +65,10 @@ function HomePage() {
           </div>
 
           <div className="grid gap-4">
-            <div className="card-hover border overflow-hidden rounded-3xl bg-white" style={{ borderColor: 'hsl(var(--border))' }}>
+            <div className="card-hover border overflow-hidden rounded-3xl bg-card" style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}>
               <img src={HERO_IMAGE} alt="PHONEX hero device" className="w-full h-full object-cover" />
             </div>
-            <div className="card-hover border rounded-3xl p-8 bg-cream" style={{ borderColor: 'hsl(var(--border))' }}>
+            <div className="card-hover border rounded-3xl p-8 bg-card" style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}>
               <span className="section-label">Featured release</span>
               <h3 className="mt-4 text-2xl font-serif-display">Zenith Pro Max</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -99,7 +85,7 @@ function HomePage() {
 
       <section className="py-16" aria-labelledby="categories-heading">
         <div className="max-w-7xl mx-auto px-6">
-          <SectionHeading
+          <SectionHeader
             eyebrow="Category highlights"
             title="Shop by curated device classes."
             description="Browse the collections that define our assortment."
@@ -114,8 +100,8 @@ function HomePage() {
                 <Link
                   key={category.id}
                   to={`/category/${category.slug}`}
-                  className="card-hover group rounded-3xl border p-8 bg-white"
-                  style={{ borderColor: 'hsl(var(--border))' }}
+                  className="card-hover group rounded-3xl border p-8 bg-card"
+                  style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}
                 >
                   <div className="flex items-center justify-between gap-4">
                     <span className="section-label">{category.name}</span>
@@ -133,7 +119,7 @@ function HomePage() {
 
       <section className="pb-20" aria-labelledby="featured-heading">
         <div className="max-w-7xl mx-auto px-6">
-          <SectionHeading
+          <SectionHeader
             eyebrow="Featured products"
             title="Selected items from across the store."
             description="Handpicked favorites from our current collection."
@@ -226,20 +212,10 @@ function CategoryPage() {
     return list
   }, [q, color, device, min, max, features])
 
-  function removeChip(chip) {
-    if (chip.key.startsWith('feat:')) {
-      const val = chip.key.slice(5)
-      const next = features.filter((f) => f !== val)
-      setParam('features', next.length ? next.join(',') : '')
-    } else {
-      setParam(chip.key, '')
-    }
-  }
-
   return (
     <main className="flex-1 py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <SectionHeading
+        <SectionHeader
           eyebrow={slug ? category?.name || 'Shop' : 'Shop'}
           title={slug ? `Products in ${category?.name || 'this collection'}` : 'All products'}
           description={slug ? category?.description : 'Explore every product available in the PHONEX catalog.'}
@@ -342,7 +318,7 @@ function CategoryPage() {
           ) : products.length > 0 ? (
             products.map((product) => <ProductCard key={product.id} product={product} />)
           ) : (
-            <div className="rounded-3xl border bg-white p-10 text-center md:col-span-2 xl:col-span-3" style={{ borderColor: 'hsl(var(--border))' }}>
+            <div className="rounded-3xl border bg-card p-10 text-center md:col-span-2 xl:col-span-3" style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}>
               <p className="text-sm text-muted-foreground">No products match your filters.</p>
               <button onClick={clearAllFilters} className="mt-4 inline-block btn-secondary">Reset</button>
             </div>
@@ -410,8 +386,10 @@ function ProductPage() {
     return (
       <main className="flex-1 py-16">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-lg text-muted-foreground">Product not found.</p>
-          <Link to="/category" className="mt-6 inline-block btn-secondary">Browse products</Link>
+          <div className="rounded-3xl border bg-card p-10" style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}>
+            <p className="text-lg text-muted-foreground">Product not found.</p>
+            <Link to="/category" className="mt-6 inline-block btn-secondary">Browse products</Link>
+          </div>
         </div>
       </main>
     )

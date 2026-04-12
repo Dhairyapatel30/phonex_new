@@ -35,7 +35,7 @@ export default function WishlistPage() {
                   style={{ borderColor: 'hsl(var(--border))' }}
                 >
                   <div className="rounded-2xl bg-cream overflow-hidden flex items-center justify-center" style={{ width: 96, height: 96 }}>
-                    <img src={imageSrc} alt={w.products?.name} className="w-full h-full object-cover" />
+                    <img src={imageSrc} alt={w.products?.name} className="w-full h-full object-cover bg-card" style={{ backgroundColor: 'hsl(var(--card))' }} />
                   </div>
                   <div className="flex-1">
                     <Link to={`/product/${w.products?.slug}`} className="font-medium">

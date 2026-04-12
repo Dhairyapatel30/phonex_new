@@ -9,8 +9,13 @@ export default function ProductCard({ product, showCategory = true }) {
   return (
     <Link to={`/product/${product.slug}`} className="block group">
       <article
-        className={`card-hover border bg-white flex flex-col`}
-        style={{ borderColor: 'hsl(var(--border))', borderWidth: '0.5px' }}
+        className={`card-hover border bg-card flex flex-col`}
+        style={{
+          borderColor: 'hsl(var(--border))',
+          borderWidth: '0.5px',
+          backgroundColor: 'hsl(var(--card), #fff)',
+          color: 'hsl(var(--card-foreground), #111)',
+        }}
       >
         {/* Image area */}
         <div className={`${tintClass} aspect-[4/3] overflow-hidden relative`}>
