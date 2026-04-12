@@ -40,6 +40,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 fontSize: '0.8125rem',
                 letterSpacing: '0.01em',
               },
+              success: {
+                icon: '✅',
+                ariaLive: 'polite',
+              },
+              error: {
+                icon: '❌',
+                ariaLive: 'assertive',
+              },
             }}
           />
         </AuthProvider>

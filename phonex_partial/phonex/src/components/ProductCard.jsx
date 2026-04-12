@@ -1,10 +1,12 @@
 // ProductCard.jsx
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getProductImage, getTintClass, formatPriceUSD } from '../lib/utils.js'
 
 export default function ProductCard({ product, showCategory = true }) {
   const imageSrc = getProductImage(product)
   const tintClass = getTintClass(product.categories?.tint_color)
+  const [zoomed, setZoomed] = useState(false)
 
   return (
     <Link to={`/product/${product.slug}`} className="block group">
@@ -18,14 +20,20 @@ export default function ProductCard({ product, showCategory = true }) {
         }}
       >
         {/* Image area */}
-        <div className={`${tintClass} aspect-[4/3] overflow-hidden relative`}>
+        <div
+          className={`${tintClass} aspect-[4/3] overflow-hidden relative cursor-zoom-in`}
+          onMouseEnter={() => setZoomed(true)}
+          onMouseLeave={() => setZoomed(false)}
+          onClick={() => setZoomed((z) => !z)}
+          style={{ position: 'relative' }}
+        >
           <img
             src={imageSrc}
             alt={product.name}
             loading="lazy"
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover transition-transform duration-300 ${zoomed ? 'scale-125 z-20' : 'scale-100'}`}
+            style={{ cursor: zoomed ? 'zoom-out' : 'zoom-in' }}
           />
-
           {/* Featured badge */}
           {product.featured && (
             <div className="badge-gold absolute top-3 left-3">
