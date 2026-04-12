@@ -400,9 +400,9 @@ function ProductPage() {
   return (
     <main className="flex-1 py-16">
       <div className="max-w-7xl mx-auto px-6 grid gap-10 lg:grid-cols-[0.95fr_0.7fr]">
-        <section className="rounded-3xl border bg-white p-10" style={{ borderColor: 'hsl(var(--border))' }}>
+        <section className="rounded-3xl border bg-card p-10" style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}>
           <div className="flex items-start gap-8 flex-col lg:flex-row">
-            <div className="rounded-3xl bg-cream overflow-hidden flex items-center justify-center" style={{ width: '320px', height: '320px' }}>
+            <div className="rounded-3xl bg-cream overflow-hidden flex items-center justify-center" style={{ width: '320px', height: '320px', backgroundColor: 'hsl(var(--cream))' }}>
               <img src={imageSrc} alt={product.name} loading="lazy" className="w-full h-full object-cover" />
             </div>
             <div>
@@ -438,7 +438,7 @@ function ProductPage() {
         </section>
 
         <aside className="space-y-6">
-          <div className="rounded-3xl border bg-white p-8" style={{ borderColor: 'hsl(var(--border))' }}>
+          <div className="rounded-3xl border bg-card p-8" style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}>
             <h2 className="text-xl font-serif-display">Order details</h2>
             <p className="mt-4 text-sm text-muted-foreground">
               Stock: {product.stock ?? 100} available
@@ -452,8 +452,8 @@ function ProductPage() {
                 min="1"
                 value={qty}
                 onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
-                className="w-20 rounded-xl border bg-white px-3 py-2 text-sm"
-                style={{ borderColor: 'hsl(var(--border))' }}
+                className="w-20 rounded-xl border bg-input px-3 py-2 text-sm"
+                style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--input))', color: 'hsl(var(--foreground))' }}
               />
             </div>
 
@@ -507,7 +507,7 @@ function ReviewsSection({ product, reviews }) {
   }
 
   return (
-    <div className="rounded-3xl border bg-white p-8" style={{ borderColor: 'hsl(var(--border))' }}>
+    <div className="rounded-3xl border bg-card p-8" style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}>
       <h3 className="text-lg font-serif-display">Reviews</h3>
       {reviews.length === 0 ? (
         <p className="mt-4 text-sm text-muted-foreground">No reviews yet. Be the first to write one.</p>

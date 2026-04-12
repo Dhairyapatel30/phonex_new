@@ -58,10 +58,12 @@ export default function ProductHighlights({ product }) {
 function HighlightCard({ title, emoji, tone, icon, items }) {
   const bg = tone === 'positive' ? 'bg-cream' : 'bg-soft-blue'
 
+  // Use CSS variable backgrounds for dark mode support
+  const bgColor = tone === 'positive' ? { backgroundColor: 'hsl(var(--cream))' } : { backgroundColor: 'hsl(var(--soft-blue))' };
   return (
     <div
-      className={`rounded-3xl border p-6 ${bg}`}
-      style={{ borderColor: 'hsl(var(--border))' }}
+      className={`rounded-3xl border p-6`}
+      style={{ borderColor: 'hsl(var(--border))', ...bgColor }}
     >
       <div className="flex items-center gap-2">
         <span aria-hidden="true" className="text-lg leading-none">
@@ -74,9 +76,8 @@ function HighlightCard({ title, emoji, tone, icon, items }) {
         {items.map((item, idx) => (
           <li key={idx} className="flex items-start gap-2 text-sm leading-snug">
             <span
-              className={`mt-0.5 h-5 w-5 rounded-full flex items-center justify-center shrink-0 ${
-                tone === 'positive' ? 'bg-white text-foreground' : 'bg-white text-foreground'
-              }`}
+              className="mt-0.5 h-5 w-5 rounded-full flex items-center justify-center shrink-0"
+              style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--foreground))' }}
               aria-hidden="true"
             >
               {icon}
