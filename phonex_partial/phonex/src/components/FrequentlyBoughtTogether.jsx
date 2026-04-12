@@ -58,8 +58,8 @@ export default function FrequentlyBoughtTogether({ product }) {
 
   return (
     <section
-      className="mt-12 rounded-3xl border bg-white p-8"
-      style={{ borderColor: 'hsl(var(--border))' }}
+      className="mt-12 rounded-3xl border bg-card p-8"
+      style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--card))' }}
       aria-labelledby="fbt-heading"
     >
       <div className="flex items-end justify-between flex-wrap gap-4 mb-6">
@@ -104,10 +104,10 @@ function RecommendationCard({ product }) {
   return (
     <Link
       to={`/product/${product.slug}`}
-      className="shrink-0 w-40 md:w-auto rounded-2xl border bg-cream/40 p-3 hover:bg-cream transition-colors"
-      style={{ borderColor: 'hsl(var(--border))' }}
+      className="shrink-0 w-40 md:w-auto rounded-2xl border p-3 hover:bg-cream transition-colors"
+      style={{ borderColor: 'hsl(var(--border))', backgroundColor: 'hsl(var(--cream))' }}
     >
-      <div className="aspect-square rounded-xl overflow-hidden bg-white">
+      <div className="aspect-square rounded-xl overflow-hidden bg-card" style={{ backgroundColor: 'hsl(var(--card))' }}>
         <img
           src={imageSrc}
           alt={product.name}
