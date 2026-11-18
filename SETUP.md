@@ -24,8 +24,8 @@ npm run dev                 # http://localhost:5000
 ```
 
 The seed command creates an admin user:
-
-- **Email:** `admin@phonex.local`
+local
+- **Email:** `admin@phonex.`
 - **Password:** `admin123`
 
 Change it before doing anything real.
@@ -34,9 +34,9 @@ Change it before doing anything real.
 
 ```bash
 cd phonex_partial/phonex
-cp .env.example .env        # VITE_API_URL=http://localhost:5000/api
+cp .env.example .env        # VITE_API_URL=http://100.76.76.112:5173
 npm install
-npm run dev                 # http://localhost:5173
+npm run dev                 # http://100.76.76.112:5173
 ```
 
 ## What's included
